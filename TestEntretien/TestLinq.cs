@@ -14,8 +14,37 @@ namespace TestEntretien
                 "aabccccc",
                 "ddflfccccc"
             };
-                    
+
+            
+            var output = input.SelectMany(word => word).GroupBy(
+                letter => letter,
+                (letter, letters) => new
+                {
+                    Key = letter,
+                    Count = letters.Count()
+                });
+
+            var result = output.OrderByDescending(o => o.Count).FirstOrDefault();
+            
+            Console.WriteLine("{0} win", result);
+
         }
+
+        public static void Anagramme()
+        {
+            string[] input = { "reza", "eat", "tea", "tan", "ate", "nat", "bat", "bta", "azer" };
+
+            var output = input.ToLookup(word => String.Concat(word.OrderBy(letter => letter)), word => word);
+
+            // Show result
+            foreach (IGrouping<string, string> group in output)
+            {
+                Console.WriteLine(group.Key);
+                foreach (string str in group)
+                    Console.WriteLine("    {0}", str);
+            }
+        }
+
         public static void MergeIndexAndRemoveDuplicate()
         {
             /* RESULTAT ATTENDU

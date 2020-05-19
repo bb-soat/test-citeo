@@ -23,13 +23,19 @@ namespace TestEntretien
                 new List<int>() { 6,23,7,8},
                 new List<int>() { 2,50,100,88},
             };
-            
-            
-            
+
+            var duplicates = datas.SelectMany(n => n).ToList();
+            var uniques = duplicates.Distinct().ToList();
+            uniques.ForEach(n => duplicates.Remove(n));
+
+            Console.WriteLine("duplicates: {0}", string.Join(',', duplicates));
+
+            Console.WriteLine("result: ");
+            for (var i = 0; i < datas.Count; i++)
+            {
+                datas[i].RemoveAll(n => duplicates.Contains(n));
+                Console.WriteLine(string.Join(',', datas[i]));
+            }
         }
-
-       
-
-
     }
 }

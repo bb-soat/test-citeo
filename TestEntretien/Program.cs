@@ -8,7 +8,8 @@ namespace TestEntretien
         {
             Console.WriteLine("starting..");
             TestAlgo.RemoveDuplicate();
-            //TestLinq.MergeIndexAndRemoveDuplicate();      
+            TestLinq.FindCharWithMaxOccurence();      
+            TestLinq.Anagramme();      
 
             Console.WriteLine("complete");
             Console.ReadLine();
