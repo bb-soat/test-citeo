@@ -9,7 +9,8 @@ namespace TestEntretien
             Console.WriteLine("starting..");
             TestAlgo.RemoveDuplicate();
             TestLinq.FindCharWithMaxOccurence();      
-            TestLinq.Anagramme();      
+            TestLinq.Anagramme();
+            TestLinq.MergeIndexAndRemoveDuplicate();
 
             Console.WriteLine("complete");
             Console.ReadLine();

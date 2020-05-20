@@ -52,7 +52,7 @@ namespace TestEntretien
             * Dictionary<string, List<int>> c = new Dictionary<string, List<int>>()
            {
 
-               {"a", {1} },{"b", {45}, {"c",{45,22,30} }
+               {"a", {1} },{"b", {45} }, {"c",{45,22,30} }
            };
            */
 
@@ -71,6 +71,17 @@ namespace TestEntretien
                     {"a",10 },{"c",30},{"b",20}
                 }
             };
+
+            var output = input.SelectMany(dico => dico.ToList())
+                .Where(kv => input.Count(dic => dic[kv.Key] == kv.Value) == 1)
+                .GroupBy(kv => kv.Key)
+                .ToDictionary(kv => kv.Key);
+
+            foreach (var item in output)
+            {
+                Console.WriteLine($"{item.Key}: {String.Join(", ", item.Value)}");
+            }
+            
         }
             
         
